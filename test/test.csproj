@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01A3C308-D356-4D59-B4E8-043D9EC2B32C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>test</RootNamespace>
+    <AssemblyName>test</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+    <Commandlineparameters>compile</Commandlineparameters>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Externalconsole>true</Externalconsole>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pascal.cs" />
+    <Compile Include="SourceMessageListener.cs" />
+    <Compile Include="ParserMessageListener.cs" />
+    <Compile Include="BackednMessageListener.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\backend\backend.csproj">
+      <Project>{EC2A12BE-B65C-42BC-AB3A-DE8A4B43D2D1}</Project>
+      <Name>backend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\frontend\frontend.csproj">
+      <Project>{E6068C71-AA72-40B4-A562-B1B558889872}</Project>
+      <Name>frontend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\intermediate\intermediate.csproj">
+      <Project>{F274E698-2979-4BF8-AE1C-31BC7C96FD19}</Project>
+      <Name>intermediate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\message\message.csproj">
+      <Project>{7CFABC42-C1A3-4C0F-8DCE-461DF32F9432}</Project>
+      <Name>message</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+</Project>
